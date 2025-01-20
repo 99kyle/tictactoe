@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 
-//V1 of tictactoe
+//V2 of tictactoe
 
 public class Main {
 
@@ -30,7 +30,7 @@ public class Main {
             //Game State 1 - Ongoing game
             while (GAME_STATE == 1) {
                 Scanner scn = new Scanner(System.in);
-                char player_shape = (PLAYER_TURN == 1) ? 'X':'A'; //lambda exp to display player tile
+                char player_shape = (PLAYER_TURN == 1) ? 'X':'D'; //lambda exp to display player tile
                 System.out.print("Player " + PLAYER_TURN + "'s (" + player_shape + ") turn, Input move: ");
                 int move = scn.nextInt();
                 if (possible_moves.contains(Integer.toString(move))) { //checks if user move is in possible moves
@@ -100,7 +100,7 @@ public class Main {
             for(int j = 0; j<ROWS; j++){
                 if (Integer.toString(move).equals(playboard[i][j])){
                     if(PLAYER_TURN == 1) playboard[i][j] = "X";
-                    else if (PLAYER_TURN == 2) playboard[i][j] = "A";
+                    else if (PLAYER_TURN == 2) playboard[i][j] = "D";
                 }
             }
         }
@@ -120,23 +120,23 @@ public class Main {
 
         for(int i = 0; i<COLUMNS; i++){
             if ((playboard[i][0] + playboard[i][1] + playboard[i][2]).equals("XXX")) return 1;
-            else if ((playboard[i][0] + playboard[i][1] + playboard[i][2]).equals("AAA")) return 2;
+            else if ((playboard[i][0] + playboard[i][1] + playboard[i][2]).equals("DDD")) return 2;
         }
 
         //vertical check
         for(int j = 0; j<ROWS; j++){
             if ((playboard[0][j] + playboard[1][j] + playboard[2][j]).equals("XXX")) return 1;
-            else if ((playboard[0][j] + playboard[1][j] + playboard[2][j]).equals("AAA")) return 2;
+            else if ((playboard[0][j] + playboard[1][j] + playboard[2][j]).equals("DDD")) return 2;
         }
 
         //left to right diagonal check
         if ((playboard[0][0] + playboard[1][1] + playboard[2][2]).equals("XXX")) return 1;
-        else if ((playboard[0][0] + playboard[1][1] + playboard[2][2]).equals("AAA")) return 2;
+        else if ((playboard[0][0] + playboard[1][1] + playboard[2][2]).equals("DDD")) return 2;
 
 
         //right to left diagonal check
         if ((playboard[0][2] + playboard[1][1] + playboard[2][0]).equals("XXX")) return 1;
-        else if ((playboard[0][2] + playboard[1][1] + playboard[2][0]).equals("AAA")) return 2;
+        else if ((playboard[0][2] + playboard[1][1] + playboard[2][0]).equals("DDD")) return 2;
 
         if (possible_moves.isEmpty()) return 3;
 
